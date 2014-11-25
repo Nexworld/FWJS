@@ -1,0 +1,26 @@
+{
+  "name": "NWCOREFormation",
+  "description": "Demonstration de Framework de type CORE jQuery vs PrototypeJS",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-uglify": "~0.2.7"
+  },
+  "version": "0.0.0",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "~4.10.4",
+    "ejs": "~1.0.0",
+    "body-parser": "~1.9.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
+}
