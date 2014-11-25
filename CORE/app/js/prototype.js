@@ -17,14 +17,11 @@ document.observe('dom:loaded', function(){
 		}
 	})
 
-	var lis = $$('li');
-	lis.each(function(li, i, lis){
+	$$('li').each(function(li, i, lis){
 		Element.extend(li)
 	})
 
-	var btn = $('prototype');
-
-	btn.observe('click', function(evt){
+	$('prototype').observe('click', function(evt){
 		lis.each(function(li, i, lis){
 			li.colorify()
 		})
