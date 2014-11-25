@@ -17,6 +17,14 @@
     res.render('index.ejs');
   });
 
+  app.get('/jqueryui', function(req, res){
+    res.render('jqueryUI.ejs');
+  });
+
+  app.get('/bootstrap', function(req, res){
+    res.render('bootstrap.ejs');
+  });
+
   app.get('/api/todos', function(req, res){
     res.setHeader('Content-type', 'text/json');
     var json = api.TodoApi.get_todos();
