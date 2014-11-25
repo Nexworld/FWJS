@@ -1,6 +1,7 @@
 (function(){
 
   var express = require('express'),
+      bodyParser = require('body-parser')
       api = require('./scripts/api');
 
   var app = express();
@@ -8,13 +9,12 @@
   app.set('view engine', 'ejs');
 
   // MiddleWares
-  app.use(express.logger())
-    .use(express.bodyParser())
+  app.use(bodyParser.urlencoded({ extended: false }))
     .use('/app', express.static(__dirname + '/app'));
 
   // Routes
   app.get('/', function(req, res){
-    res.render('support.ejs');
+    res.render('index.ejs');
   });
 
   app.get('/api/todos', function(req, res){
