@@ -12,11 +12,20 @@ exports.TodoApi = (function(){
 			return todos[i];
 		},
 		set_todo: function(i, todo){
-			todos[i] = todo;
-			return todos[i];
+			if (todo){
+				todos[i] = todo;
+				return todos[i];
+			}else{
+				return null;
+			}
 		},
 		add_todo: function(todo){
-			return todos.push(todo);
+			if (todo){
+				return todos.push(todo);
+			}else{
+				return null;
+			}
+			
 		},
 		remove_todo: function(i){
 			return todos.splice(i);
