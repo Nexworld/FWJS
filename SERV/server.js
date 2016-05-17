@@ -1,65 +1,67 @@
-(function(){
+'use strict';
 
+(function () {
   var express = require('express'),
-      bodyParser = require('body-parser')
-      api = require('./scripts/api');
+    bodyParser = require('body-parser'),
+    cors = require('cors');
+    
+  var todoStore = require('./services/todo-store');
 
   var app = express();
-  // set the view engine to ejs
-  app.set('view engine', 'ejs');
 
   // MiddleWares
-  app.use(bodyParser.urlencoded({ extended: false }))
-    .use('/app', express.static(__dirname + '/app'));
+  app.use(cors());
+  app.use(bodyParser.json());
+
+  // Static files
+  app.use('/swagger', express.static('swagger'));
 
   // Routes
-  app.get('/', function(req, res){
-    res.render('index.ejs');
+  app.get('/api/todos', function (req, res, next) {
+    res.json(todoStore.list());
   });
 
-  app.get('/api/todos', function(req, res){
-    res.setHeader('Content-type', 'text/json');
-    var json = api.TodoApi.get_todos();
-    res.end(JSON.stringify(json));
+  app.post('/api/todos', function (req, res, next) {
+    var item = {
+      title: req.body.title,
+      description: req.body.description
+    };
+    res.json(todoStore.add(item));
   });
 
-  app.post('/api/todos', function(req, res){
-    res.setHeader('Content-type', 'text/json');
-    var todo = req.body.todo;
-    var json = api.TodoApi.add_todo(todo);
-    res.end(JSON.stringify(json));
+  app.delete('/api/todos', function (req, res, next) {
+    todoStore.clear();
+    res.sendStatus(200);
   });
 
-  app.delete('/api/todos', function(req, res){
-    res.setHeader('Content-type', 'text/json');
-    var json = api.TodoApi.empty_todos();
-    res.end(JSON.stringify(json));
+  app.get('/api/todos/:id', function (req, res, next) {
+    var item = todoStore.get(parseInt(req.params.id));
+    if(!item) {
+      return res.status(404).json({ code: 404, message: "Item not found" })
+    }
+    res.json(item);
   });
 
-  app.get('/api/todos/:id', function(req, res){
-    res.setHeader('Content-type', 'text/json');
-    var id = req.params.id;
-    var json = api.TodoApi.get_todo(id);
-    res.end(JSON.stringify(json));
+  app.delete('/api/todos/:id', function (req, res, next) {
+    todoStore.remove(parseInt(req.params.id));
+    res.sendStatus(200);
   });
 
-  app.delete('/api/todos/:id', function(req, res){
-    res.setHeader('Content-type', 'text/json');
-    var id = req.params.id;
-    var json = api.TodoApi.remove_todo(id);
-    res.end(JSON.stringify(json));
+  app.put('/api/todos/:id', function (req, res, next) {
+    var item = {
+      title: req.body.title,
+      description: req.body.description
+    };
+    
+    item = todoStore.set(parseInt(req.params.id), item);
+    if(!item) {
+      return res.status(404).json({ code: 404, message: "Item not found" })
+    }
+    res.json(item);
   });
-
-  app.put('/api/todos/:id', function(req, res){
-    res.setHeader('Content-type', 'text/json');
-    var id = req.params.id;
-    var todo = req.body.todo;
-    var json = api.TodoApi.set_todo(id, todo);
-
-    res.end(JSON.stringify(json));
-  });
-
 
   // Listen on port 8000 for dev purposes
-  app.listen(8080);
+  app.listen(8000, function() {
+    console.log("App listen on port 8000");
+  });
 })();

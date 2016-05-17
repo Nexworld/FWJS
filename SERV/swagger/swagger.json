@@ -1,0 +1,225 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "TODO API",
+        "description": "Move your life forward with the TODO API",
+        "version": "1.1.0"
+    },
+    "host": "localhost:8000",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/api",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/todos": {
+            "get": {
+                "summary": "TODO list",
+                "description": "Get all TODO items.\n",
+                "responses": {
+                    "200": {
+                        "description": "An array of TODOs",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TodoOutput"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add TODO item",
+                "description": "Add a TODO item\n",
+                "parameters": [
+                    {
+                        "name": "New item",
+                        "in": "body",
+                        "required": true,
+                        "description": "TODO item to add.",
+                        "schema": {
+                            "$ref": "#/definitions/TodoInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item added.",
+                        "schema": {
+                            "$ref": "#/definitions/TodoOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Clear the TODO list",
+                "description": "Clear the TODO list.\n",
+                "responses": {
+                    "200": {
+                        "description": "Deletion successful"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/todos/{id}": {
+            "get": {
+                "summary": "TODO item",
+                "description": "Get a TODO item\n",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the item to get",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requested TODO",
+                        "schema": {
+                            "$ref": "#/definitions/TodoOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update a TODO item",
+                "description": "Update a TODO item.\n",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the item to get",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer"
+                    },
+                    {
+                        "name": "New values",
+                        "in": "body",
+                        "required": true,
+                        "description": "New values of the item.",
+                        "schema": {
+                            "$ref": "#/definitions/TodoInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Updated TODO.",
+                        "schema": {
+                            "$ref": "#/definitions/TodoOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a TODO item",
+                "description": "Delete a TODO item.\n",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the item to delete",
+                        "required": true,
+                        "type": "number",
+                        "format": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item deletion successful"
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "TodoOutput": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Unique identifier of the TODO list"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Display name of TODO item."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of TODO item."
+                },
+                "timestamp": {
+                    "type": "integer",
+                    "description": "Timestamp of the creation / last update"
+                }
+            }
+        },
+        "TodoInput": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Display name of TODO item."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of TODO item."
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
