@@ -20,14 +20,15 @@ module.exports = function (grunt) {
         src: ['app/js/**/*.js'],
         dest: 'app/dist/grunt.<%= pkg.name %>.js'
       },
+      compress: {}
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
         '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
+        ' Licensed <%= pkg.license %> */\n'
       },
       dist: {
         src: '<%= concat.dist.dest %>',

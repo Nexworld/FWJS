@@ -1,0 +1,17 @@
+{
+  "name": "indus-grunt",
+  "version": "1.1.0",
+  "description": "Example of a Grunt file",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nexworld",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Nexworld/FWJS",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^1.0.1"
+  }
+}
