@@ -2,14 +2,11 @@
 
 module.exports = function (grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '',
-    // Task configuration.
     clean: {
-      src: ['app/dist']
+      src: ['app/dist/*.js']
     },
     concat: {
       options: {
@@ -18,21 +15,21 @@ module.exports = function (grunt) {
       },
       dist: {
         src: ['app/js/**/*.js'],
-        dest: 'app/dist/grunt.<%= pkg.name %>.js'
+        dest: 'app/dist/<%= pkg.name %>.js'
       },
       compress: {}
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= pkg.license %> */\n'
+        banner: '/**\n' +
+        '* <%= pkg.name %> - <%= pkg.description %>\n' +
+        '* @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        '* @link v<%= pkg.homepage %>\n' +
+        '* @license <%= pkg.license %>\n*/\n'
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'app/dist/grunt.<%= pkg.name %>.min.js'
+        dest: 'app/dist/<%= pkg.name %>.min.js'
       },
     }
   });
