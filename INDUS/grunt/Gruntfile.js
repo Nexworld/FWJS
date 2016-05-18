@@ -22,10 +22,10 @@ module.exports = function (grunt) {
     uglify: {
       options: {
         banner: '/**\n' +
-        '* <%= pkg.name %> - <%= pkg.description %>\n' +
-        '* @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '* @link v<%= pkg.homepage %>\n' +
-        '* @license <%= pkg.license %>\n*/\n'
+        ' * <%= pkg.name %> - <%= pkg.description %>\n' +
+        ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        ' * @link v<%= pkg.homepage %>\n' +
+        ' * @license <%= pkg.license %>\n */\n'
       },
       dist: {
         src: '<%= concat.dist.dest %>',
