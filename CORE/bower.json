@@ -1,0 +1,22 @@
+{
+  "name": "NWCOREFormation",
+  "description": "Confrontation de framework 'manipulation DOM' vs 'structuré'",
+  "authors": [
+    "Nexworld"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Nexworld/FWJS",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "jquery": "^2.2.3"
+  }
+}

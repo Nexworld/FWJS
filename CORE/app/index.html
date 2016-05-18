@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<title>CORE - Manipulation DOM vs FW Structuré</title>
+
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+		body {
+			font-family: 'Open Sans', sans-serif;
+		}
+	</style>
+
+	<!-- Librairies dont nous avons besoin -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+
+	<!-- Code de configuration et utilitaires nécessaires à la demo -->
+	<script type="text/javascript">
+		$.noConflict();
+		
+		var BASE_URL = "http://localhost:9000";
+		
+		// - VanillaJs
+		var itemCounter = 1;
+		function addItem() {
+			var xhr  = new XMLHttpRequest();
+			xhr.open('POST', BASE_URL + '/api/todos');
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.send(JSON.stringify({
+				title: 'Item ' + itemCounter++,
+				description: 'Ajouté le ' + new Date().toString()
+			}));
+		}
+	</script>
+
+	<!-- Nos scripts -->
+	<script src="js/example-jquery.js"></script>
+	<script src="js/example-angular.js"></script>
+</head>
+
+<body>
+	<button style="float: right" onclick="addItem()">Ajouter un item</button>
+	<h1>Manipulation DOM vs FW Structuré</h1>
+
+	<div style="display: flex">
+		<!-- jQuery items -->
+		<div style="flex: 1;">
+			<h2>Manipulation DOM (avec jQuery)</h2>
+			<div>
+				<button id="jquery-list">Actualiser la liste</button>
+
+				<ul id="jquery-todos">
+
+				</ul>
+			</div>
+		</div>
+
+		<!-- Angular items -->
+		<div style="flex: 1;" ng-app="app">
+			<h2>FW structuré (avec Angular)</h2>
+			<div ng-controller="AppController">
+				<button id="angular-list" ng-click="list()">Actualiser la liste</button>
+
+				<ul>
+					<li ng-repeat="item in todoItems"><b>{{ item.title }}</b><br /><i>{{ item.description }}</i></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
