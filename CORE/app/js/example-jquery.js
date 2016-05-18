@@ -23,7 +23,11 @@
 		function updateTodoList(data) {
 			$("ul#jquery-todos").empty();
 			for (var item of data) {
-				$("ul#jquery-todos").append('<li><b>' + item.title + '</b><br /><i>' + item.description + '</i></li>');
+				$("ul#jquery-todos").append(
+					'<li> \
+					   <b>' + item.title + '</b><br /> \
+					   <i>' + item.description + '</i> \
+				    </li>');
 			}
 		}
 

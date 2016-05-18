@@ -64,7 +64,10 @@
 				<button id="angular-list" ng-click="list()">Actualiser la liste</button>
 
 				<ul>
-					<li ng-repeat="item in todoItems"><b>{{ item.title }}</b><br /><i>{{ item.description }}</i></li>
+					<li ng-repeat="item in todoItems">
+						<b>{{ item.title }}</b><br />
+						<i>{{ item.description }}</i>
+					</li>
 				</ul>
 			</div>
 		</div>
