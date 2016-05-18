@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<title>IHM - jQueryUI vs Bootstrap</title>
+
+	<style>
+		div.iframe {
+			position: fixed;
+			top: 100px;
+			bottom: 0px;
+			left: 0;
+			right: 0;
+		}
+		
+		iframe {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>jQueryUI vs Bootstrap</h1>
+	
+	<a href="boostrap.html" target="_blank" style="color: grey; font-size: 10px; float: right;">[Open Boostrap in a new window]</a>
+	
+	<div class="iframe" style="right: 50%; left: 0;">
+		<iframe name="jQueryUI" src="jquery-ui.html"> 
+			Votre navigateur ne supporte pas les iframes 
+	</iframe>
+	</div>
+
+	<div class="iframe" style="right: 0; left: 50%;">
+		<iframe name="Bootstrap" src="bootstrap.html"> 
+			Votre navigateur ne supporte pas les iframes 
+	</iframe>
+	</div>
+</body>
+
+</html>

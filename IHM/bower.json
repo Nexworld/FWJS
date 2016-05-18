@@ -1,0 +1,21 @@
+{
+  "name": "NWIHMFormation",
+  "description": "Demonstration de Framework de type IHM jQuery UI vs Bootstrap",
+  "authors": [
+    "Nexworld"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Nexworld/FWJS",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "bootstrap": "^3.3.6",
+    "jquery-ui": "^1.11.4"
+  }
+}
