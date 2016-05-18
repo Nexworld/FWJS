@@ -26,6 +26,9 @@
       title: req.body.title,
       description: req.body.description
     };
+    if(!item.title || !item.description) {
+      return res.status(400).json({ code: 400, message: "Bad request: Some fields are missing" });
+    }
     res.json(todoStore.add(item));
   });
 
@@ -37,7 +40,7 @@
   app.get('/api/todos/:id', function (req, res, next) {
     var item = todoStore.get(parseInt(req.params.id));
     if(!item) {
-      return res.status(404).json({ code: 404, message: "Item not found" })
+      return res.status(404).json({ code: 404, message: "Item not found" });
     }
     res.json(item);
   });
@@ -60,8 +63,8 @@
     res.json(item);
   });
 
-  // Listen on port 8000 for dev purposes
-  app.listen(8000, function() {
-    console.log("App listen on port 8000");
+  // Listen on port 9000 for dev purposes
+  app.listen(9000, function() {
+    console.log("App listen on port 9000");
   });
 })();
