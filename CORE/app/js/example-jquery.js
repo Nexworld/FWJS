@@ -1,6 +1,6 @@
-'use strict';
-
 (function (jQuery) {
+	'use strict';
+
 	jQuery(document).ready(function ($) {
 
 		$('#jquery-list').click(function (evt) {
