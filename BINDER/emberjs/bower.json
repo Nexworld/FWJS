@@ -1,0 +1,24 @@
+{
+  "name": "nw-fwjs-binder-ember",
+  "description": "Démo binder EmberJs",
+  "authors": [
+    "Nexworld"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Nexworld/FWJS",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "handlebars": "^4.0.5",
+    "ember": "^2.6.0",
+    "ember-data": "^2.6.0",
+    "ember-localstorage-adapter": "^0.5.5"
+  },
+  "devDependencies": {}
+}
