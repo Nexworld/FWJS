@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Dojo</title>
+	<link rel="stylesheet" href="js/lib/common/base.css">
+	<link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+	<section id="todoapp" data-dojo-type="todo/app18"></section>
+
+	<script>
+			require = {
+				async: true,
+				parseOnLoad: true,
+				locale: 'en',
+				paths: {
+					dijit: '../dijit',
+					todo: '../../js'
+				},
+				deps: ['dojo/parser', 'dojo/domReady!'],
+				mvc: { debugBindings: true }
+			};
+		</script>
+	<script src="bower_components/dojo/dojo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "nw-fwjs-binder-dojo",
+  "description": "Démo binder Dojo",
+  "authors": [
+    "Nexworld"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Nexworld/FWJS",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "dojo": "^1.11.2",
+    "dijit": "^1.11.2",
+    "dojox": "^1.11.2"
+  },
+  "devDependencies": {}
+}
