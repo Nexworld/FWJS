@@ -1,10 +1,12 @@
 {
   "name": "todomvc-angular-tests",
   "description": "Unit tests for the AngularJS example of TodoMVC",
-  "author": "Pascal Hartig <phartig@rdrei.net>",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "devDependencies": {
-    "karma": "~0.10.0"
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2"
   },
   "scripts": {
     "test": "karma start config/karma.conf.js"

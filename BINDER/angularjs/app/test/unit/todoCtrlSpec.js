@@ -8,18 +8,12 @@
 		// Load the module containing the app, only 'ng' is loaded by default.
 		beforeEach(module('todomvc'));
 
-		beforeEach(inject(function ($controller, $rootScope, localStorage) {
+		beforeEach(inject(function ($controller, $rootScope, $injector) {
 			scope = $rootScope.$new();
 
-			store = localStorage;
-
-			localStorage.todos = [];
-			localStorage._getFromLocalStorage = function () {
-				return [];
-			};
-			localStorage._saveToLocalStorage = function (todos) {
-				localStorage.todos = todos;
-			};
+			// - Inject and flush local store
+			store = $injector.get('store');
+			store.flush();
 
 			ctrl = $controller('TodoCtrl', {
 				$scope: scope,
@@ -45,7 +39,7 @@
 				scope.$emit('$routeChangeSuccess');
 
 				expect(scope.status).toBe('');
-				expect(scope.statusFilter).toBeNull();
+				expect(scope.statusFilter).toEqual({});
 			});
 
 			describe('being at /active', function () {
